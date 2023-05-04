@@ -32,7 +32,33 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  display: flex;
+  flex-direction: column
+}
+
+.inbox-div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+
+}
+
+button {
+  align-self: center;
+  justify-content: center;
+  /* display: flex; */
+}
+
+span:hover {
+  background-color: yellow;
+  cursor: pointer;
 }
