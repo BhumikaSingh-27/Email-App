@@ -6,10 +6,9 @@ const EmailPage = () => {
   const { mailId } = useParams();
   const { state } = useContext(MailContext);
 
-  const mailInfo = state.mailData.find(({ mId }) => mId.tostring() === mailId);
+  const mailInfo = state.mailData.find(({ mId }) => mId.toString() === mailId);
   return (
     <div>
-      EmailPage
       {
         <div className="inbox-div">
           <h1>{mailInfo?.subject}</h1>

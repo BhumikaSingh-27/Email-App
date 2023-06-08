@@ -43,27 +43,16 @@ const reducerFn = (state, action) => {
           ? { ...mail, isStarred: !mail.isStarred }
           : mail
       );
+
       return { ...state, mailData: updatedInbox };
     }
 
     case "CHECK_UNREAD": {
-      if (action.payload.checked) {
-        const updatedInbox = state.mailData.filter((mail) => mail.unread);
-        return { ...state, mailData: updatedInbox };
-      } else {
-        return { ...state, mailData: mails };
-      }
+      return { ...state, isUnread: action.payload };
     }
 
     case "CHECK_STARED": {
-      if (action.payload.checked) {
-        const updatedInbox = state.mailData.filter(
-          ({ isStarred }) => isStarred
-        );
-        return { ...state, mailData: updatedInbox };
-      } else {
-        return { ...state, mailData: mails };
-      }
+      return { ...state, isStarred: action.payload };
     }
     default:
       return state;
@@ -74,13 +63,15 @@ export const MailContextPrivider = ({ children }) => {
     mailData: [],
     spam: [],
     trash: [],
+    isUnread: false,
+    isStarred: false,
   });
 
   useEffect(() => {
     dispatch({ type: "GET_DATA", payload: mails });
   }, []);
 
-  console.log(state.mailData)
+  console.log(state.mailData);
   return (
     <MailContext.Provider value={{ state, dispatch }}>
       {children}
