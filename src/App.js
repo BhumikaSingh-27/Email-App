@@ -6,6 +6,7 @@ import Trash from "./components/Trash";
 import EmailPage from "./components/EmailPage";
 import Navbar from "./components/Navbar";
 
+
 function App() {
   return (
     <div className="App">
