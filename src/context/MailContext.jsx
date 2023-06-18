@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import mails from "../data/mail";
+import { useToast } from "react-toastify";
 
 export const MailContext = createContext();
 
@@ -71,9 +72,13 @@ export const MailContextPrivider = ({ children }) => {
     dispatch({ type: "GET_DATA", payload: mails });
   }, []);
 
+//   const notify = (type,msg) =>{
+// useToast(type,msg)
+//   }
+
   console.log(state.mailData);
   return (
-    <MailContext.Provider value={{ state, dispatch }}>
+    <MailContext.Provider value={{ state, dispatch}}>
       {children}
     </MailContext.Provider>
   );

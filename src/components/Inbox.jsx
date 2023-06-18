@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { MailContext } from "../context/MailContext";
 import { Link } from "react-router-dom";
+import useToast from "../hooks/useToast";
 
 const Inbox = () => {
-  const { state, dispatch } = useContext(MailContext);
+  const { state, dispatch,notify } = useContext(MailContext);
 
   const unreadMails = state.mailData.filter(({ unread }) => unread);
 
@@ -73,8 +74,10 @@ const Inbox = () => {
                   Delete
                 </button>
                 <button
-                  onClick={() =>
+                  onClick={() =>{
                     dispatch({ type: "MARK_AS_READ", payload: mail })
+                    notify("success","mark read")
+                  }
                   }
                 >
                   {unread ? "Mark as Read" : "Mark as Unread"}

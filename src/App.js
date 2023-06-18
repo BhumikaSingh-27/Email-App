@@ -5,7 +5,7 @@ import Spam from "./components/Spam";
 import Trash from "./components/Trash";
 import EmailPage from "./components/EmailPage";
 import Navbar from "./components/Navbar";
-
+import {ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -22,7 +22,9 @@ function App() {
       </Routes>
       </div>
     </div>
+    <ToastContainer />
     </div>
+
   );
 }
 
